@@ -3,13 +3,16 @@ var cards = (function() {
 	//The global options
 	var opt = {
 		cardSize : {width:69,height:94, padding:18},
-		animationSpeed : 500,
+//		cardSize : {width:46,height:62, padding:12},
+
+animationSpeed : 500,
 		table : 'body',
-		cardback : 'red',
+		cardback : 'blue',
 		acesHigh : false,
 		cardsUrl : 'img/cards.png',
-		blackJoker : false,
-		redJoker : false
+//		cardsUrl : 'img/cards-sm.png',
+		blackJoker : true,
+		redJoker : true
 	};
 	var zIndexCounter = 1;
 	var all = []; //All the cards created.
