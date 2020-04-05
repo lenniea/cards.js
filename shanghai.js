@@ -1,6 +1,6 @@
 
 //Tell the library which element to use for the table
-cards.init({table:'#card-table'});
+cards.init({table:'#card-table', cardSize: {width:46,height:62, padding:12}, cardsUrl : 'img/cards-sm.png', cardback:'blue', blackJoker:true, redJoker:true, decks:4});
 
 //Create a new deck of cards
 deck = new cards.Deck(); 
@@ -30,7 +30,7 @@ discardPile.x += 50;
 $('#deal').click(function() {
 	//Deck has a built in method to deal to hands.
 	$('#deal').hide();
-	deck.deal(11, [hand1, hand2, hand3, hand4], 50, function() {
+	deck.deal(19, [hand1, hand2, hand3, hand4], 50, function() {
 		//This is a callback function, called when the dealing
 		//is done.
 		discardPile.addCard(deck.topCard());

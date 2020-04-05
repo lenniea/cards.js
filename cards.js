@@ -4,15 +4,15 @@ var cards = (function() {
 	var opt = {
 		cardSize : {width:69,height:94, padding:18},
 //		cardSize : {width:46,height:62, padding:12},
-
-animationSpeed : 500,
+		animationSpeed : 500,
 		table : 'body',
-		cardback : 'blue',
+		cardback : 'red',
 		acesHigh : false,
 		cardsUrl : 'img/cards.png',
 //		cardsUrl : 'img/cards-sm.png',
-		blackJoker : true,
-		redJoker : true
+		blackJoker : false,
+		redJoker : false,
+		decks : 1
 	};
 	var zIndexCounter = 1;
 	var all = []; //All the cards created.
@@ -35,23 +35,25 @@ animationSpeed : 500,
 				}
 			}
 		}
-		var start = opt.acesHigh ? 2 : 1;
-		var end = start + 12;
-		opt.table = $(opt.table)[0];
-		if ($(opt.table).css('position') == 'static') {
-			$(opt.table).css('position', 'relative');
-		}
-		for (var i = start; i <= end; i++) {
-			all.push(new Card('h', i, opt.table));
-			all.push(new Card('s', i, opt.table));
-			all.push(new Card('d', i, opt.table));
-			all.push(new Card('c', i, opt.table));
-		}
-		if (opt.blackJoker) {
-			all.push(new Card('bj', 0, opt.table));
-		}
-		if (opt.redJoker) {
-			all.push(new Card('rj', 0, opt.table));
+		for (var d = 0; d < opt.decks; ++d) {
+			var start = opt.acesHigh ? 2 : 1;
+			var end = start + 12;
+			opt.table = $(opt.table)[0];
+			if ($(opt.table).css('position') == 'static') {
+				$(opt.table).css('position', 'relative');
+			}
+			for (var i = start; i <= end; i++) {
+				all.push(new Card('h', i, opt.table));
+				all.push(new Card('s', i, opt.table));
+				all.push(new Card('d', i, opt.table));
+				all.push(new Card('c', i, opt.table));
+			}
+			if (opt.blackJoker) {
+				all.push(new Card('bj', 0, opt.table));
+			}
+			if (opt.redJoker) {
+				all.push(new Card('rj', 0, opt.table));
+			}
 		}
 		
 		$('.card').click(mouseEvent);
