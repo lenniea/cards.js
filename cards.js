@@ -95,6 +95,21 @@ var cards = (function() {
 			this.moveToFront();
 		},
 
+		// Return card sort index: alternating colors: diamonds (lowest), clubs, hearts, spades (highest)
+		sortIndex : function() {
+			if (this.suit == 'd') {
+				return this.rank;
+			} else if (this.suit == 'c') {
+				return this.rank + 14;
+			} else if (this.suit == 'h') {
+				return this.rank + 28;
+			} else if (this.suit == 's') {
+				return this.rank + 42;
+			} else {
+				return this.rank + 56;
+			}
+		},
+
 		toString: function () {
 			return this.name;
 		},
@@ -161,6 +176,22 @@ var cards = (function() {
 				}
 				this.push(card);
 				card.container = this;
+			}
+		},
+
+
+		sortBySuit : function() {
+			// Simple bubble sort for now
+			for (var i = 0; i < this.length-1; i++) {
+				for (var j = i+1; j < this.length; j++) {
+					var c1 = this[i];
+					var c2 = this[j];
+					if (c1.sortIndex() > c2.sortIndex()) {
+						// Swap cards if out of order
+						this[i] = c2;
+						this[j] = c1;
+					}
+				}
 			}
 		},
 		
@@ -270,7 +301,8 @@ var cards = (function() {
 		deal : function(count, hands, speed, callback) {
 			var me = this;
 			var i = 0;
-			var totalCount = count*hands.length;
+			var num = hands.length;
+			var totalCount = count*num;
 			function dealOne() {
 				if (me.length == 0 || i == totalCount) {
 					if (callback) {
@@ -278,8 +310,13 @@ var cards = (function() {
 					}
 					return;
 				}
-				hands[i%hands.length].addCard(me.topCard());
-				hands[i%hands.length].render({callback:dealOne, speed:speed});
+				var handno = i % num;
+				hands[handno].addCard(me.topCard());
+				if (i >= totalCount - num) {
+					// If last round sort hand by suit for convenience
+					hands[handno].sortBySuit();
+				}
+				hands[handno].render({callback:dealOne, speed:speed});
 				i++;
 			}
 			dealOne();
