@@ -111,7 +111,7 @@ animationSpeed : 500,
 				.css('-o-transform', 'rotate(' + angle + 'deg)');
 		},
 		
-		showCard : function() {
+		showCard : function(angle) {
 			var offsets = { "c": 0, "d": 1, "h": 2, "s": 3, "rj": 2, "bj": 3 };
 			var xpos, ypos;
 			var rank = this.rank;
@@ -120,7 +120,7 @@ animationSpeed : 500,
 			}
 			xpos = -rank * opt.cardSize.width;
 			ypos = -offsets[this.suit] * opt.cardSize.height;
-			this.rotate(0);
+			this.rotate(angle);
 			$(this.el).css('background-position', xpos + 'px ' + ypos + 'px');
 		},
 
@@ -135,7 +135,8 @@ animationSpeed : 500,
 		}		
 	};
 	
-	function Container() {
+	function Container(angle) {
+		this.angle = angle;
 	
 	}
 	
@@ -213,7 +214,7 @@ animationSpeed : 500,
 			var flip = function(){
 				for (var i=0;i<me.length;i++) {
 					if (me.faceUp) {
-						me[i].showCard();
+						me[i].showCard(me.angle);
 					} else {
 						me[i].hideCard();
 					}
@@ -286,16 +287,28 @@ animationSpeed : 500,
 	function Hand(options) {
 		this.init(options);
 	}
-	Hand.prototype = new Container();
+	Hand.prototype = new Container(0);
 	Hand.prototype.extend({
 		calcPosition : function(options) {
 			options = options || {};
-			var width = opt.cardSize.width + (this.length-1)*opt.cardSize.padding;
-			var left = Math.round(this.x - width/2);
-			var top = Math.round(this.y-opt.cardSize.height/2, 0);
-			for (var i=0;i<this.length;i++) {
-				this[i].targetTop = top;
-				this[i].targetLeft = left+i*opt.cardSize.padding;
+			if (this.angle == 0) {
+				// Horizontal hand
+				var width = opt.cardSize.width + (this.length-1)*opt.cardSize.padding;
+				var left = Math.round(this.x - width/2);
+				var top = Math.round(this.y-opt.cardSize.height/2);
+				for (var i=0;i<this.length;i++) {
+					this[i].targetTop = top;
+					this[i].targetLeft = left+i*opt.cardSize.padding;
+				}
+			} else {
+				// Vertical hand
+				var height = opt.cardSize.width + (this.length-1)*opt.cardSize.padding;
+				var left = Math.round(this.x-opt.cardSize.height/2);
+				var top = Math.round(this.y-height/2);
+				for (var i=0;i<this.length;i++) {
+					this[i].targetTop = top+i*opt.cardSize.padding;
+					this[i].targetLeft = left;
+				}
 			}
 		},
 		

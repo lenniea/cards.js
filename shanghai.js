@@ -15,9 +15,11 @@ deck.render({immediate:true});
 
 //Now lets create a couple of hands, one face down, one face up.
 hand1 = new cards.Hand({faceUp:true, y:60});
-hand2 = new cards.Hand({faceUp:true, x:650, y:300, rotate:90});
+hand2 = new cards.Hand({faceUp:true, x:700, y:300});
 hand3 = new cards.Hand({faceUp:true, y:540});
-hand4 = new cards.Hand({faceUp:true, x:150, y:300, rotate:90});
+hand4 = new cards.Hand({faceUp:true, x:100, y:300});
+hand2.angle = 90;
+hand4.angle = 270;
 
 //Lets add a discard pile
 discardPile = new cards.Deck({faceUp:true});
