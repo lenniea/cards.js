@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docbase="/home/nicu/Desktop/card_nicu_buculei_01.zip_FILES/cards/white"
-   sodipodi:docname="white_c_j.svg"
-   inkscape:version="0.41+cvs"
+   sodipodi:docname="c11.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:version="0.32"
    version="1.0"
    x="0.0000000"
    y="0.0000000"
-   preserveAspectRatio="xMinYMin meet"
+   preserveAspectRatio="xMinYMin meet"
    viewBox="0 0 140 190"
    height="190.00000"
    id="svg2">
@@ -25,9 +25,9 @@
      inkscape:current-layer="svg2"
      inkscape:window-y="26"
      inkscape:window-x="0"
-     inkscape:cy="95.000000"
-     inkscape:cx="70.000000"
-     inkscape:zoom="1.0000000"
+     inkscape:cy="122.85003"
+     inkscape:cx="58.984299"
+     inkscape:zoom="2.1138771"
      inkscape:window-height="791"
      inkscape:window-width="1152"
      inkscape:pageshadow="2"
@@ -35,7 +35,8 @@
      borderopacity="1.0"
      bordercolor="#666666"
      pagecolor="#ffffff"
-     id="base" />
+     id="base"
+     inkscape:window-maximized="0" />
   <defs
      id="defs3">
     <linearGradient
@@ -335,14 +336,6 @@
        inkscape:label="Layer 1" />
   </g>
   <path
-     d="M 18.683447,12.233829 L 25.079472,12.233829 L 25.079472,33.592566 C 25.079461,36.539690 24.237735,38.742110 22.554288,40.199831 C 20.881902,41.657543 18.345646,42.386401 14.945512,42.386408 L 13.649694,42.386408 L 13.649694,37.775582 L 14.646476,37.775582 C 15.975520,37.775580 16.977840,37.421715 17.653439,36.713983 C 18.340108,36.006251 18.683444,34.965779 18.683447,33.592566 L 18.683447,12.233829"
-     style="font-size:33.227493;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr-tb"
-     id="text1883" />
-  <path
-     d="M 119.99602,176.99995 L 113.60000,176.99995 L 113.60000,155.64121 C 113.60001,152.69409 114.44174,150.49166 116.12519,149.03394 C 117.79757,147.57623 120.33383,146.84737 123.73396,146.84737 L 125.02977,146.84737 L 125.02977,151.45820 L 124.03299,151.45820 C 122.70395,151.45820 121.70164,151.81206 121.02603,152.51979 C 120.33937,153.22753 119.99603,154.26800 119.99602,155.64121 L 119.99602,176.99995"
-     style="font-size:33.227493;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr-tb"
-     id="text4345" />
-  <path
      sodipodi:nodetypes="cscsssccccccssscsc"
      d="M 20.527261,48.665000 C 17.860877,48.665000 15.697394,51.928523 15.697394,55.950664 C 15.697394,59.377240 20.089490,65.142330 19.918919,67.880240 C 18.508668,68.662660 14.151660,61.442720 11.899866,61.442720 C 9.2334820,61.442720 7.0700000,64.706240 7.0700000,68.728380 C 7.0700000,72.750530 9.2334820,76.014050 11.899866,76.014050 C 14.212394,76.014050 18.175527,68.800060 19.918919,69.451390 L 16.990005,82.325000 L 24.013589,82.283290 C 24.013589,82.283290 20.936644,69.802100 20.932822,69.507000 L 20.988126,69.507000 L 20.988126,69.520910 C 22.695429,68.881200 26.793987,76.153080 29.090134,76.153090 C 31.756521,76.153090 33.920003,72.889570 33.920000,68.867420 C 33.920000,64.845280 31.756521,61.581760 29.090134,61.581760 C 26.847510,61.581760 22.782426,68.682290 20.997343,67.949760 C 21.022420,65.144330 25.357127,59.373473 25.357127,55.950664 C 25.357127,51.928523 23.193647,48.665000 20.527261,48.665000 z "
      style="fill:#000000;fill-opacity:1.0000000;fill-rule:evenodd;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000"
@@ -471,16 +464,13 @@
        d="M 68.767740,56.293750 C 66.957280,56.293750 65.629970,56.905440 65.298490,57.668750 C 52.417280,54.947440 47.716380,62.153070 55.765880,65.231250 L 55.359570,67.293750 C 52.361230,70.082760 50.967060,73.572350 49.640000,75.950000 C 50.391330,76.213610 51.860810,76.447260 53.203010,76.668750 C 52.135630,79.380130 51.484010,82.365300 51.484010,85.575000 C 51.484010,90.045900 52.668210,94.160330 54.640720,97.543750 C 53.790980,98.359750 52.929190,99.217270 52.234120,99.981250 C 52.234120,99.981250 53.691880,99.202840 55.234550,98.450000 C 58.262110,103.07079 62.831910,106.10185 68.017630,106.23125 L 64.923440,106.01250 L 64.923440,106.73125 L 64.860930,106.73125 C 63.944710,106.73125 63.033430,106.83022 62.173050,107.01250 L 56.047170,104.88750 L 55.922150,110.41875 C 53.592740,112.72254 52.140360,115.90036 52.140360,119.45000 L 52.140360,134.38750 C 57.097990,136.84439 65.034410,137.99902 73.080860,137.88750 C 73.093580,137.90652 73.099380,137.93099 73.112110,137.95000 L 76.800140,137.85625 C 76.750160,137.77604 76.693900,137.68664 76.643870,137.60625 C 77.138570,137.57443 77.621540,137.52345 78.112830,137.48125 L 78.112830,137.73125 L 81.582080,137.26250 L 81.582080,137.23125 C 85.717190,136.65248 89.604040,135.77077 92.739930,134.38750 L 92.739930,119.45000 C 92.739920,112.41160 87.085880,106.74836 80.050610,106.73125 L 79.613050,102.63750 L 71.580650,106.73125 L 68.736490,106.73125 L 68.673980,106.26250 L 68.455200,106.26250 C 76.381510,106.20918 82.972970,99.446260 84.738780,90.387500 C 87.841000,90.549880 90.083190,89.725900 93.240000,88.700000 C 87.756410,86.979360 88.505960,75.381740 82.019640,68.325000 C 82.039630,68.322840 82.062170,68.327160 82.082150,68.325000 C 82.066790,68.028140 81.879680,66.751190 81.800860,66.231250 C 92.792400,63.845920 87.339470,55.390180 72.111970,58.325000 C 72.198480,58.184930 72.487030,58.102260 72.487030,57.950000 C 72.487030,57.035750 70.820790,56.293750 68.767740,56.293750 z "
        style="fill:url(#linearGradient1400);fill-opacity:1.0000000;stroke:none;stroke-width:2.0000000;stroke-miterlimit:4.0000000;stroke-dashoffset:0.0000000;stroke-opacity:1.0000000" />
   </g>
-  
-
-  <metadata>
-    <rdf:RDF 
-     xmlns="http://web.resource.org/cc/"
-     xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-      <Work rdf:about="">
+  <metadata
+     id="metadata81">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
         <dc:title>card</dc:title>
-        <dc:description></dc:description>
+        <dc:description />
         <dc:subject>
           <rdf:Bag>
             <rdf:li>white</rdf:li>
@@ -488,33 +478,49 @@
           </rdf:Bag>
         </dc:subject>
         <dc:publisher>
-           <Agent>
-             <dc:title></dc:title>
-           </Agent>
-         </dc:publisher>
-         <dc:creator>
-           <Agent>
-             <dc:title>Nicu Buculei</dc:title>
-           </Agent>
+          <cc:Agent>
+            <dc:title />
+          </cc:Agent>
+        </dc:publisher>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Nicu Buculei</dc:title>
+          </cc:Agent>
         </dc:creator>
-         <dc:rights>
-           <Agent>
-             <dc:title>Nicu Buculei</dc:title>
-           </Agent>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Nicu Buculei</dc:title>
+          </cc:Agent>
         </dc:rights>
-        <dc:date></dc:date>
+        <dc:date />
         <dc:format>image/svg+xml</dc:format>
-        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <license rdf:resource="http://web.resource.org/cc/PublicDomain" />
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://web.resource.org/cc/PublicDomain" />
         <dc:language>en</dc:language>
-      </Work>
-
-      <License rdf:about="http://web.resource.org/cc/PublicDomain">
-         <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
-         <permits rdf:resource="http://web.resource.org/cc/Distribution" />
-         <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
-      </License>
-
+      </cc:Work>
+      <cc:License
+         rdf:about="http://web.resource.org/cc/PublicDomain">
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Reproduction" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/Distribution" />
+        <cc:permits
+           rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+      </cc:License>
     </rdf:RDF>
   </metadata>
+  <path
+     id="text1386"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:33.22750092px;font-family:'Bitstream Vera Sans';writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 20.867522,12.953178 h 6.396025 V 34.31192 c -9e-6,2.947125 -0.841736,5.149546 -2.525183,6.607266 -1.672386,1.457713 -4.208644,2.186571 -7.608779,2.186578 l -4.808141,-0.501761 0.669014,-4.443573 3.840093,0.334507 c 1.329043,-2e-6 2.331363,-0.353868 3.006962,-1.061598 0.68667,-0.707734 1.030006,-1.748206 1.030009,-3.121419 V 12.953178"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccccccccc" />
+  <path
+     id="text1386-9"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:33.22750092px;font-family:'Bitstream Vera Sans';writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 116.28428,175.94607 h -6.39602 v -21.35874 c 1e-5,-2.94713 0.84173,-5.14955 2.52518,-6.60727 1.67238,-1.45771 4.20864,-2.18657 7.60878,-2.18657 l 4.80814,0.50176 -0.66902,4.44357 -3.84009,-0.33451 c -1.32904,0 -2.33136,0.35387 -3.00696,1.0616 -0.68667,0.70773 -1.03001,1.74821 -1.03001,3.12142 v 21.35874"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccccccccc" />
 </svg>
