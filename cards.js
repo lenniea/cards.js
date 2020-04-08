@@ -341,11 +341,12 @@ var cards = (function() {
 				}
 			} else {
 				// Vertical hand
-				var height = opt.cardSize.width + (this.length-1)*opt.cardSize.padding;
+				var sign = (this.angle == 90) ? +1 : -1;
+				var height = opt.cardSize.width*sign + (this.length-1)*opt.cardSize.padding;
 				var left = Math.round(this.x-opt.cardSize.height/2);
-				var top = Math.round(this.y-height/2);
+				var pos = Math.round(this.y-sign*height/2);
 				for (var i=0;i<this.length;i++) {
-					this[i].targetTop = top+i*opt.cardSize.padding;
+					this[i].targetTop = pos+i*sign*opt.cardSize.padding;
 					this[i].targetLeft = left;
 				}
 			}
