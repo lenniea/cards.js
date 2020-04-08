@@ -91,7 +91,7 @@ var cards = (function() {
 				position:'absolute',
 				cursor:'pointer'	
 			}).addClass('card').data('card', this).appendTo($(table));
-			this.showCard();
+			this.showCard(0);
 			this.moveToFront();
 		},
 

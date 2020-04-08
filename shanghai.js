@@ -29,20 +29,20 @@ hand6 = new cards.Hand({faceUp:true, x:x2, y:y2});
 hand7 = new cards.Hand({faceUp:true, x:x1, y:y2});
 hand8 = new cards.Hand({faceUp:true, x:50, y:300});
 
-hand4.angle = 90;
-hand8.angle = 270;
+hand4.angle = 270;
+hand8.angle = 90;
 
-//Lets add a discard pile
-discardPile = new cards.Deck({faceUp:true});
-discardPile.x -= 200;
-var xdiscard = 650;
-var ydiscard = 200;
+//Lets add a oldBuy pile
+lastCard = new cards.Deck({faceUp:true});
+lastCard.x -= 200;
+var xoldBuy = 650;
+var yoldBuy = 200;
 
-// Create discard piles (per suit)
-discardSpades = new cards.Hand({faceUp:true, x:xdiscard, y:ydiscard});
-discardHearts = new cards.Hand({faceUp:true, x:xdiscard, y:ydiscard + 75});
-discardDiamonds = new cards.Hand({faceUp:true, x:xdiscard, y:ydiscard+150});
-discardClubs = new cards.Hand({faceUp:true, x:xdiscard, y:ydiscard+225});
+// Create oldBuy piles (per suit)
+oldBuySpades = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy});
+oldBuyHearts = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy + 75});
+oldBuyClubs = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+150});
+oldBuyDiamonds = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+225});
 
 //Let's deal when the Deal button is pressed:
 $('#deal').click(function() {
@@ -51,8 +51,8 @@ $('#deal').click(function() {
 	deck.deal(19, [hand1, hand2, hand3, hand4, hand5, hand6, hand7, hand8], 50, function() {
 		//This is a callback function, called when the dealing
 		//is done.
-		discardPile.addCard(deck.topCard());
-		discardPile.render();
+		lastCard.addCard(deck.topCard());
+		lastCard.render();
 	});
 });
 
@@ -66,37 +66,57 @@ deck.click(function(card){
 	}
 });
 
-// When you click on the discard pile card is added to your hand
-discardPile.click(function(card) {
-	if (card == discardPile.topCard()) {
-		hand6.addCard(discardPile.topCard());
+// When you click on the oldBuy pile card is added to your hand
+lastCard.click(function(card) {
+	if (card == lastCard.topCard()) {
+		hand6.addCard(lastCard.topCard());
 		hand6.render();
 	}
 });
 
+oldBuyClubs.click(function(card) {
+	hand6.addCard(card);
+	hand6.render();
+});
+
+oldBuyDiamonds.click(function(card) {
+	hand6.addCard(card);
+	hand6.render();
+});
+
+oldBuyHearts.click(function(card) {
+	hand6.addCard(card);
+	hand6.render();
+});
+
+oldBuySpades.click(function(card) {
+	hand6.addCard(card);
+	hand6.render();
+});
+
 //Finally, when you click a card in your hand, if it's
-//the same suit or rank as the top card of the discard pile
+//the same suit or rank as the top card of the oldBuy pile
 //then it's added to it
 hand6.click(function(card){
-	if (discardPile.length > 0) {
-		var discard = discardPile.topCard();
-		var suit = discard.suit;
+	if (lastCard.length > 0) {
+		var oldBuy = lastCard.topCard();
+		var suit = oldBuy.suit;
 		if (suit == 's') {
-			discardSpades.addCard(discard);
-			discardSpades.render();
+			oldBuySpades.addCard(oldBuy);
+			oldBuySpades.render();
 		} else if (suit == 'h') {
-			discardHearts.addCard(discard)
-			discardHearts.render();
+			oldBuyHearts.addCard(oldBuy)
+			oldBuyHearts.render();
 		} else if (suit == 'd') {
-			discardDiamonds.addCard(discard);
-			discardDiamonds.render();
+			oldBuyDiamonds.addCard(oldBuy);
+			oldBuyDiamonds.render();
 		} else {
-			discardClubs.addCard(discard);
-			discardClubs.render();
+			oldBuyClubs.addCard(oldBuy);
+			oldBuyClubs.render();
 		}
 	}
-	discardPile.addCard(card);
-	discardPile.render();
+	lastCard.addCard(card);
+	lastCard.render();
 	hand6.render();
 });
 
