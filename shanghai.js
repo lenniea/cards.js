@@ -5,7 +5,7 @@ cards.init({table:'#card-table', cardSize: {width:46,height:62, padding:12}, car
 //Create a new deck of cards
 deck = new cards.Deck(); 
 //By default it's in the middle of the container, put it slightly to the side
-deck.x -= 100;
+deck.x -= 120;
 
 // cards.all contains all cards, put them all in the deck
 deck.addCards(cards.all); 
@@ -14,28 +14,34 @@ deck.addCards(cards.all);
 deck.render({immediate:true});
 
 //Now lets create a couple of hands, one face down, one face up.
-var x1 = 180;
-var x2 = 550;
-var x3 = 920;
+var x1 = 150;
+var x2 = 370;
+var x3 = 720;
+var x4 = 940;
 var y1 = 50;
-var y2 = 550;
+var y2 = 210;
+var y3 = 370;
+var y4 = 530;
 
-hand1 = new cards.Hand({faceUp:true, x:x1, y:y1});
-hand2 = new cards.Hand({faceUp:true, x:x2, y:y1});
-hand3 = new cards.Hand({faceUp:true, x:x3, y:y1});
-hand4 = new cards.Hand({faceUp:true, x:1060, y:300});
-hand5 = new cards.Hand({faceUp:true, x:x3, y:y2});
-hand6 = new cards.Hand({faceUp:true, x:x2, y:y2});
-hand7 = new cards.Hand({faceUp:true, x:x1, y:y2});
-hand8 = new cards.Hand({faceUp:true, x:50, y:300});
+var players = 8;
 
-hand4.angle = 270;
-hand8.angle = 90;
+var playerhand = [];
+
+playerhand[0] = new cards.Hand({faceUp:true, x:x2, y:y1});
+playerhand[1] = new cards.Hand({faceUp:true, x:x3, y:y1});
+playerhand[2] = new cards.Hand({faceUp:true, x:x4, y:y2});
+playerhand[3] = new cards.Hand({faceUp:true, x:x4, y:y3});
+playerhand[4] = new cards.Hand({faceUp:true, x:x3, y:y4});
+playerhand[5] = new cards.Hand({faceUp:true, x:x2, y:y4});
+playerhand[6] = new cards.Hand({faceUp:true, x:x1, y:y3});
+playerhand[7] = new cards.Hand({faceUp:true, x:x1, y:y2});
+
+turn = 5;
 
 //Lets add a oldBuy pile
 lastCard = new cards.Deck({faceUp:true});
 lastCard.x -= 200;
-var xoldBuy = 650;
+var xoldBuy = 600;
 var yoldBuy = 200;
 
 // Create oldBuy piles (per suit)
@@ -48,7 +54,7 @@ oldBuyDiamonds = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+225});
 $('#deal').click(function() {
 	//Deck has a built in method to deal to hands.
 	$('#deal').hide();
-	deck.deal(19, [hand1, hand2, hand3, hand4, hand5, hand6, hand7, hand8], 50, function() {
+	deck.deal(19, playerhand, 50, function() {
 		//This is a callback function, called when the dealing
 		//is done.
 		lastCard.addCard(deck.topCard());
@@ -58,46 +64,46 @@ $('#deal').click(function() {
 
 
 //When you click on the top card of a deck, a card is added
-//to your hand
+//to your playerhand
 deck.click(function(card){
 	if (card === deck.topCard()) {
-		hand6.addCard(deck.topCard());
-		hand6.render();
+		playerhand[turn].addCard(deck.topCard());
+		playerhand[turn].render();
 	}
 });
 
-// When you click on the oldBuy pile card is added to your hand
+// When you click on the oldBuy pile card is added to your playerhand
 lastCard.click(function(card) {
 	if (card == lastCard.topCard()) {
-		hand6.addCard(lastCard.topCard());
-		hand6.render();
+		playerhand[turn].addCard(lastCard.topCard());
+		playerhand[turn].render();
 	}
 });
 
 oldBuyClubs.click(function(card) {
-	hand6.addCard(card);
-	hand6.render();
+	playerhand[turn].addCard(card);
+	playerhand[turn].render();
 });
 
 oldBuyDiamonds.click(function(card) {
-	hand6.addCard(card);
-	hand6.render();
+	playerhand[turn].addCard(card);
+	playerhand[turn].render();
 });
 
 oldBuyHearts.click(function(card) {
-	hand6.addCard(card);
-	hand6.render();
+	playerhand[turn].addCard(card);
+	playerhand[turn].render();
 });
 
 oldBuySpades.click(function(card) {
-	hand6.addCard(card);
-	hand6.render();
+	playerhand[turn].addCard(card);
+	playerhand[turn].render();
 });
 
-//Finally, when you click a card in your hand, if it's
+//Finally, when you click a card in your playerhand, if it's
 //the same suit or rank as the top card of the oldBuy pile
 //then it's added to it
-hand6.click(function(card){
+playerhand[turn].click(function(card){
 	if (lastCard.length > 0) {
 		var oldBuy = lastCard.topCard();
 		var suit = oldBuy.suit;
@@ -117,7 +123,7 @@ hand6.click(function(card){
 	}
 	lastCard.addCard(card);
 	lastCard.render();
-	hand6.render();
+	playerhand[turn].render();
 });
 
 
