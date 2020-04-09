@@ -1,11 +1,13 @@
 
 //Tell the library which element to use for the table
-cards.init({table:'#card-table', cardSize: {width:46,height:62, padding:12}, cardsUrl : 'img/cards-sm.png', cardback:'blue', blackJoker:true, redJoker:true, decks:4});
+//cards.init({table:'#card-table', cardSize: {width:46,height:62, padding:12}, cardsUrl : 'img/cards-sm.png', cardback:'blue', blackJoker:true, redJoker:true, decks:4});
+cards.init({table:'#card-table', cardback:'blue', blackJoker:true, redJoker:true, decks:4});
 
 //Create a new deck of cards
 deck = new cards.Deck(); 
 //By default it's in the middle of the container, put it slightly to the side
-deck.x -= 120;
+deck.x -= 130;
+deck.y -= 50;
 
 // cards.all contains all cards, put them all in the deck
 deck.addCards(cards.all); 
@@ -14,14 +16,14 @@ deck.addCards(cards.all);
 deck.render({immediate:true});
 
 //Now lets create a couple of hands, one face down, one face up.
-var x1 = 150;
-var x2 = 370;
-var x3 = 720;
-var x4 = 940;
+var x1 = 210;
+var x2 = 310;
+var x3 = 940;
+var x4 = 1040;
 var y1 = 50;
-var y2 = 210;
-var y3 = 370;
-var y4 = 530;
+var y2 = 240;
+var y3 = 430;
+var y4 = 620;
 
 var players = 8;
 
@@ -40,15 +42,16 @@ turn = 5;
 
 //Lets add a oldBuy pile
 lastCard = new cards.Deck({faceUp:true});
-lastCard.x -= 200;
-var xoldBuy = 600;
+lastCard.x -= 130;
+lastCard.y += 50;
+var xoldBuy = 650;
 var yoldBuy = 200;
 
 // Create oldBuy piles (per suit)
 oldBuySpades = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy});
-oldBuyHearts = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy + 75});
-oldBuyClubs = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+150});
-oldBuyDiamonds = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+225});
+oldBuyHearts = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+100});
+oldBuyClubs = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+200});
+oldBuyDiamonds = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+300});
 
 //Let's deal when the Deal button is pressed:
 $('#deal').click(function() {
