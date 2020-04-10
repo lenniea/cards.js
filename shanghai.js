@@ -30,6 +30,41 @@ var oldBuySpades;
 var playerhand = [];
 var turn;
 
+var x1 = 210;
+var x2 = 310;
+var xc = 625;
+var x3 = 940;
+var x4 = 1040;
+var y1 = 50;
+var y2 = 240;
+var yc = 335;
+var y3 = 430;
+var y4 = 620;
+
+var xpos4 = [xc,x4,xc,x1];
+var ypos4 = [y1,yc,y4,yc];
+
+var xpos5 = [x2,x3,x4,xc,x1]; 
+var ypos5 = [y1,y1,yc,y4,yc];
+
+var xpos6 = [xc,x4,x4,xc,x1,x1]; 
+var ypos6 = [y1,y2,y3,y4,y3,y2];
+
+var xpos7 = [x2,x3,x4,x4,xc,x1,x1]; 
+var ypos7 = [y1,y1,y2,y3,y4,y3,y2];
+
+var xpos8 = [x2,x3,x4,x4,x3,x2,x1,x1]; 
+var ypos8 = [y1,y1,y2,y3,y4,y4,y3,y2];
+
+var xpos9 = [x2,x3,x4,x4,x4,xc,x1,x1,x1]; 
+var ypos9 = [y1,y1,y2,y3,y4,y4,y4,y3,y2];
+
+var xpos10 = [x1,xc,x4,x4,x4,x4,xc,x1,x1,x1]; 
+var ypos10 = [y1,y1,y1,y2,y3,y4,y4,y4,y3,y2];
+
+var xpos = [xpos4,xpos5,xpos6,xpos7,xpos8,xpos9,xpos10];
+var ypos = [ypos4,ypos5,ypos6,ypos7,ypos8,ypos9,ypos10];
+
 function makeHands(players) {
 	//Lets add a oldBuy pile
 	lastCard = new cards.Deck({faceUp:true});
@@ -116,42 +151,6 @@ function makeHands(players) {
 		playerhand[turn].render();
 	});
 }
-
-//Now lets create a couple of hands, one face down, one face up.
-var x1 = 210;
-var x2 = 310;
-var xc = 625;
-var x3 = 940;
-var x4 = 1040;
-var y1 = 50;
-var y2 = 240;
-var yc = 335;
-var y3 = 430;
-var y4 = 620;
-
-var xpos4 = [xc,x4,xc,x1];
-var ypos4 = [y1,yc,y4,yc];
-
-var xpos5 = [x2,x3,x4,xc,x1]; 
-var ypos5 = [y1,y1,yc,y4,yc];
-
-var xpos6 = [xc,x4,x4,xc,x1,x1]; 
-var ypos6 = [y1,y2,y3,y4,y3,y2];
-
-var xpos7 = [x2,x3,x4,x4,xc,x1,x1]; 
-var ypos7 = [y1,y1,y2,y3,y4,y3,y2];
-
-var xpos8 = [x2,x3,x4,x4,x3,x2,x1,x1]; 
-var ypos8 = [y1,y1,y2,y3,y4,y4,y3,y2];
-
-var xpos9 = [x2,x3,x4,x4,x4,xc,x1,x1,x1]; 
-var ypos9 = [y1,y1,y2,y3,y4,y4,y4,y3,y2];
-
-var xpos10 = [x1,xc,x4,x4,x4,x4,xc,x1,x1,x1]; 
-var ypos10 = [y1,y1,y1,y2,y3,y4,y4,y4,y3,y2];
-
-var xpos = [xpos4,xpos5,xpos6,xpos7,xpos8,xpos9,xpos10];
-var ypos = [ypos4,ypos5,ypos6,ypos7,ypos8,ypos9,ypos10];
 
 //Let's deal when the Deal button is pressed:
 $('#deal').click(function() {
