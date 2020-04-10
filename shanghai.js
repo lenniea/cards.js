@@ -18,27 +18,44 @@ deck.render({immediate:true});
 //Now lets create a couple of hands, one face down, one face up.
 var x1 = 210;
 var x2 = 310;
+var xc = 625;
 var x3 = 940;
 var x4 = 1040;
 var y1 = 50;
 var y2 = 240;
+var yc = 335;
 var y3 = 430;
 var y4 = 620;
 
-var players = 8;
+var players = 7;
+
+var xpos4 = [xc,x4,xc,x1];
+var ypos4 = [y1,yc,y4,yc];
+
+var xpos5 = [x2,x3,x4,xc,x1]; 
+var ypos5 = [y1,y1,yc,y4,yc];
+
+var xpos6 = [xc,x4,x4,xc,x1,x1]; 
+var ypos6 = [y1,y2,y3,y4,y3,y2];
+
+var xpos7 = [x2,x3,x4,x4,xc,x1,x1]; 
+var ypos7 = [y1,y1,y2,y3,y4,y3,y2];
+
+var xpos8 = [x2,x3,x4,x4,x3,x2,x1,x1]; 
+var ypos8 = [y1,y1,y2,y3,y4,y4,y3,y2];
+
+var xpos = [xpos4,xpos5,xpos6,xpos7,xpos8];
+var ypos = [ypos4,ypos5,ypos6,ypos7,ypos8];
 
 var playerhand = [];
 
-playerhand[0] = new cards.Hand({faceUp:true, x:x2, y:y1});
-playerhand[1] = new cards.Hand({faceUp:true, x:x3, y:y1});
-playerhand[2] = new cards.Hand({faceUp:true, x:x4, y:y2});
-playerhand[3] = new cards.Hand({faceUp:true, x:x4, y:y3});
-playerhand[4] = new cards.Hand({faceUp:true, x:x3, y:y4});
-playerhand[5] = new cards.Hand({faceUp:true, x:x2, y:y4});
-playerhand[6] = new cards.Hand({faceUp:true, x:x1, y:y3});
-playerhand[7] = new cards.Hand({faceUp:true, x:x1, y:y2});
+for (var i=0; i < players; i++) {
+	var xp = xpos[players-4][i];
+	var yp = ypos[players-4][i];
+	playerhand[i] = new cards.Hand({faceUp:true, x:xp, y:yp});
+}
 
-turn = 5;
+turn = Math.trunc((players + 1)/2);
 
 //Lets add a oldBuy pile
 lastCard = new cards.Deck({faceUp:true});
