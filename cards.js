@@ -38,11 +38,9 @@ var cards = (function() {
 		for (var d = 0; d < opt.decks; ++d) {
 			var start = opt.acesHigh ? 2 : 1;
 			var end = start + 12;
-			if (opt.table != null) {
-				opt.table = $(opt.table)[0];
-				if ($(opt.table).css('position') == 'static') {
-					$(opt.table).css('position', 'relative');
-				}
+			opt.table = $(opt.table)[0];
+			if ($(opt.table).css('position') == 'static') {
+				$(opt.table).css('position', 'relative');
 			}
 			for (var i = start; i <= end; i++) {
 				all.push(new Card('h', i, opt.table));
@@ -57,9 +55,8 @@ var cards = (function() {
 				all.push(new Card('rj', 0, opt.table));
 			}
 		}
-		if (this.opt != null && this.opt.table != null) {
-			$('.card').click(mouseEvent);
-		}
+		
+		$('.card').click(mouseEvent);
 		shuffle(all);
 	}
 
@@ -87,17 +84,15 @@ var cards = (function() {
 			this.rank = rank;
 			this.name = suit.toUpperCase()+rank;
 			this.faceUp = false;
-			if (table != null) {
-				this.el = $('<div/>').css({
-					width:opt.cardSize.width,
-					height:opt.cardSize.height,
-					"background-image":'url('+ opt.cardsUrl + ')',
-					position:'absolute',
-					cursor:'pointer'	
-				}).addClass('card').data('card', this).appendTo($(table));
-				this.showCard(0);
-				this.moveToFront();
-			}
+			this.el = $('<div/>').css({
+				width:opt.cardSize.width,
+				height:opt.cardSize.height,
+				"background-image":'url('+ opt.cardsUrl + ')',
+				position:'absolute',
+				cursor:'pointer'	
+			}).addClass('card').data('card', this).appendTo($(table));
+			this.showCard(0);
+			this.moveToFront();
 		},
 
 		// Return card sort index: alternating colors: diamonds (lowest), clubs, hearts, spades (highest)
@@ -153,9 +148,7 @@ var cards = (function() {
 		},
 		
 		moveToFront : function() {
-			if (opt.table != null) {
-				$(this.el).css('z-index', zIndexCounter++);
-			}
+			$(this.el).css('z-index', zIndexCounter++);
 		}		
 	};
 	
@@ -214,13 +207,8 @@ var cards = (function() {
 
 		init : function(options) {
 			options = options || {};
-			if (opt.table != null) {
-				this.x = options.x || $(opt.table).width()/2;
-				this.y = options.y || $(opt.table).height()/2;
-			} else {
-				this.x = options.x;
-				this.y = options.y;
-			}
+			this.x = options.x || $(opt.table).width()/2;
+			this.y = options.y || $(opt.table).height()/2;
 			this.faceUp = options.faceUp;
 		},
 

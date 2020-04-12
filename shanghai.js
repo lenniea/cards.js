@@ -35,11 +35,11 @@ var x2 = 310;
 var xc = 625;
 var x3 = 940;
 var x4 = 1040;
-var y1 = 50;
-var y2 = 240;
-var yc = 335;
-var y3 = 430;
-var y4 = 620;
+var y1 = 55;
+var y2 = 285;
+var yc = 400;
+var y3 = 515;
+var y4 = 745;
 
 var xpos4 = [xc,x4,xc,x1];
 var ypos4 = [y1,yc,y4,yc];
