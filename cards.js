@@ -3,13 +3,11 @@ var cards = (function() {
 	//The global options
 	var opt = {
 		cardSize : {width:69,height:94, padding:18},
-//		cardSize : {width:46,height:62, padding:12},
 		animationSpeed : 500,
 		table : 'body',
 		cardback : 'red',
 		acesHigh : false,
 		cardsUrl : 'img/cards.png',
-//		cardsUrl : 'img/cards-sm.png',
 		blackJoker : false,
 		redJoker : false,
 		decks : 1
