@@ -70,8 +70,8 @@ function makeHands(players) {
 	lastCard = new cards.Deck({faceUp:true});
 	lastCard.x -= 130;
 	lastCard.y += 50;
-	var xoldBuy = 650;
-	var yoldBuy = 200;
+	var xoldBuy = 850;
+	var yoldBuy = 250;
 
 	// Create oldBuy piles (per suit)
 	oldBuySpades = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy});
