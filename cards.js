@@ -326,6 +326,52 @@ var cards = (function() {
 	}
 	Hand.prototype = new Container(0);
 	Hand.prototype.extend({
+		addCard : function(card) {
+			// Add card to Hand
+			this.addCards([card]);
+			var css = card.el[0];
+			css.ondragstart = function() {
+				return false;
+			}
+			css.onmousedown = function(event) {
+				// (1) start the process
+				var rect = css.getBoundingClientRect();
+				var shiftX = event.clientX - rect.left;
+//				var shiftY = event.clientY - rect.top;			  
+			
+				// (2) prepare to moving: make absolute and on top by z-index
+				css.style.position = 'absolute';
+				css.style.zIndex = zIndexCounter++;
+				// move it out of any current parents directly into body
+				// to make it positioned relative to the body
+				document.body.append(css);
+				// ...and put that absolutely positioned object under the pointer
+			  
+				moveAt(event.pageX, event.pageY);
+			  
+				// centers the ball at (pageX, pageY) coordinates
+				function moveAt(x, y) {
+				  css.style.left = x - shiftX + 'px';
+//				  css.style.top = y - shiftY + 'px';
+				}
+			  
+				function onMouseMove(event) {
+				  moveAt(event.pageX, event.pageY);
+				}
+			  
+				// (3) move the ball on mousemove
+				document.addEventListener('mousemove', onMouseMove);
+			  
+				// (4) drop the ball, remove unneeded handlers
+				css.onmouseup = function() {
+				  document.removeEventListener('mousemove', onMouseMove);
+				  css.onmouseup = null;
+				};
+			  
+			  };
+			
+		},
+
 		calcPosition : function(options) {
 			options = options || {};
 			if (this.angle == 0) {

@@ -31,10 +31,10 @@ var playerhand = [];
 var turn;
 
 var x1 = 210;
-var x2 = 310;
-var xc = 625;
-var x3 = 940;
-var x4 = 1040;
+var x2 = 360;
+var xc = 725;
+var x3 = 1090;
+var x4 = 1240;
 var y1 = 55;
 var y2 = 285;
 var yc = 400;

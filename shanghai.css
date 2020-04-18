@@ -3,13 +3,8 @@ html {
 }
 
 body { 
-	position:relative;
-	border-radius:8px; 
-	box-shadow:black 0px 0px 2px; 
-	width: 1250px; 
+	width: 1450px;
 	background:#FFF; 
-	margin:20px auto; 
-	border:solid 1px black; 
 	font-family: arial, sans-serif; 
 }
 #buttons {
@@ -34,13 +29,14 @@ h1 {
 	font-size:60px;
 	text-align:center;
 	padding:0px;
-	margin:10px auto;
 }
 
 #card-table {
+	position:absolute;
+	top: 0; left: 0;
 	background-color:green;
 	height:800px;
-	width:1250px;
+	width:1450px;
 }
 a:visited {color:blue;}
 
