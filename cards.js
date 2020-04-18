@@ -329,6 +329,7 @@ var cards = (function() {
 		addCard : function(card) {
 			// Add card to Hand
 			this.addCards([card]);
+			// derived from: https://javascript.info/mouse-drag-and-drop
 			var css = card.el[0];
 			css.ondragstart = function() {
 				return false;
@@ -337,7 +338,7 @@ var cards = (function() {
 				// (1) start the process
 				var rect = css.getBoundingClientRect();
 				var shiftX = event.clientX - rect.left;
-//				var shiftY = event.clientY - rect.top;			  
+				var shiftY = event.clientY - rect.top;			  
 			
 				// (2) prepare to moving: make absolute and on top by z-index
 				css.style.position = 'absolute';
@@ -352,7 +353,7 @@ var cards = (function() {
 				// centers the ball at (pageX, pageY) coordinates
 				function moveAt(x, y) {
 				  css.style.left = x - shiftX + 'px';
-//				  css.style.top = y - shiftY + 'px';
+				  css.style.top = y - shiftY + 'px';
 				}
 			  
 				function onMouseMove(event) {
