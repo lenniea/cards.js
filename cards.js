@@ -351,7 +351,8 @@ var cards = (function() {
 			var height = opt.cardSize.height;
 			var x = options.x - maxwidth / 2;
 			var y = options.y - height / 2;
-			this.el = $('<div/>').css({
+			var html = options.buttons ? options.buttons : "";
+			this.el = $("<div/>").html(html).css({
 				width:maxwidth,
 				height:height,
 				left:x,

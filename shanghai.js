@@ -72,7 +72,7 @@ function makeHands(players) {
 	lastCard = new cards.Deck({faceUp:true});
 	lastCard.x -= 130;
 	lastCard.y += 50;
-	var xoldBuy = 850;
+	var xoldBuy = 800;
 	var yoldBuy = 250;
 
 	// Create oldBuy piles (per suit)
@@ -81,15 +81,43 @@ function makeHands(players) {
 	oldBuyClubs = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+200, max:13});
 	oldBuyDiamonds = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+300, max:13});
 
-	for (var i=0; i < players; i++) {
-		var xp = xpos[players-4][i];
-		var yp = ypos[players-4][i];
-		playerhand[i] = new cards.Hand({faceUp:true, x:xp, y:yp, max:30});
-	}
-	
 	var t = (parseInt(players)+1)/2;
 	turn = Math.trunc(t);
 
+	for (var i=0; i < players; i++) {
+		var xp = xpos[players-4][i];
+		var yp = ypos[players-4][i];
+		var buttons = '<button id="left" style="width:30px;float:left"><</button>' +
+					  '<button id="right" style="width:30px;float:right">></button>';
+		var html = (turn == i) ? buttons : "";
+		playerhand[i] = new cards.Hand({faceUp:true, x:xp, y:yp, max:30, buttons:html});
+	}
+
+	$('#left').click(function() {
+		var hand = playerhand[turn];
+		var i = hand.selected;
+		if (i > 0) {
+			// Move selected card left
+			var card = hand[i];
+			hand.splice(i, 1);
+			hand.splice(--i, 0, card);
+			hand.selected = i;
+			hand.render();
+		}
+	});
+	$('#right').click(function() {
+		var hand = playerhand[turn];
+		var i = hand.selected;
+		if (i < hand.length - 1) {
+			// Move selected card right
+			var card =  hand[i];
+			hand.splice(i, 1);
+			hand.splice(++i, 0, card);
+			hand.selected = i;
+			hand.render();
+		}
+	});
+	
 	//When you click on the top card of a deck, a card is added
 	//to your playerhand
 	deck.click(function(card){
