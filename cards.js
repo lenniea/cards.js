@@ -221,6 +221,26 @@ var cards = (function() {
 		mouseup : function(func, context) {
 			this._mouseup = {func:func,context:context};
 		},
+
+		find(card) {
+			for (var i=0; i<this.length;i++) {
+				if (this[i] == card) {
+					return i;
+				}
+			}
+			return -1;
+		},
+
+		select(card) {
+			var f = this.find(card);
+			if (f == this.selected) {
+				this.selected = -1;
+				return true;		// true: Card already selected
+			}
+			this.selected = f;
+			this.render();
+			return false;			// false: New card selected
+		},
 		
 		render : function(options) {
 			options = options || {};
@@ -230,10 +250,11 @@ var cards = (function() {
 				var card = this[i];
 				zIndexCounter++;
 				card.moveToFront();
+				var offset = (this.selected == i) ? 50 : 0;
 				var top = parseInt($(card.el).css('top'));
 				var left = parseInt($(card.el).css('left'));
-				if (top != card.targetTop || left != card.targetLeft) {
-					var props = {top:card.targetTop, left:card.targetLeft, queue:false};
+				if (top != card.targetTop - offset || left != card.targetLeft) {
+					var props = {top:card.targetTop - offset, left:card.targetLeft, queue:false};
 					if (options.immediate) {
 						$(card.el).css(props);
 					} else {
@@ -323,6 +344,22 @@ var cards = (function() {
 
 	function Hand(options) {
 		this.init(options);
+		// Create css object for Hand
+		var table = opt.table;
+		if (table) {
+			var maxwidth = opt.cardSize.width + opt.cardSize.padding * options.max + 1;
+			var height = opt.cardSize.height;
+			var x = options.x - maxwidth / 2;
+			var y = options.y - height / 2;
+			this.el = $('<div/>').css({
+				width:maxwidth,
+				height:height,
+				left:x,
+				top:y,
+				position:'absolute',
+				cursor:'pointer'	
+			}).addClass('hand').data('hand', this).appendTo($(table));
+		}
 	}
 	Hand.prototype = new Container(0);
 	Hand.prototype.extend({
@@ -334,7 +371,7 @@ var cards = (function() {
 			css.ondragstart = function() {
 				return false;
 			}
-			css.onmousedown = function(event) {
+			css.onmousedownX = function(event) {
 				// (1) start the process
 				var rect = css.getBoundingClientRect();
 				var shiftX = event.clientX - rect.left;

@@ -1,3 +1,5 @@
+//const cards = require('./cards')
+
 var deck;
 
 function makeDecks(players) {
@@ -74,15 +76,15 @@ function makeHands(players) {
 	var yoldBuy = 250;
 
 	// Create oldBuy piles (per suit)
-	oldBuySpades = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy});
-	oldBuyHearts = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+100});
-	oldBuyClubs = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+200});
-	oldBuyDiamonds = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+300});
+	oldBuySpades = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy, max:13});
+	oldBuyHearts = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+100, max:13});
+	oldBuyClubs = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+200, max:13});
+	oldBuyDiamonds = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+300, max:13});
 
 	for (var i=0; i < players; i++) {
 		var xp = xpos[players-4][i];
 		var yp = ypos[players-4][i];
-		playerhand[i] = new cards.Hand({faceUp:true, x:xp, y:yp});
+		playerhand[i] = new cards.Hand({faceUp:true, x:xp, y:yp, max:30});
 	}
 	
 	var t = (parseInt(players)+1)/2;
@@ -125,30 +127,32 @@ function makeHands(players) {
 		playerhand[turn].render();
 	});
 
-	//Finally, when you click a card in your playerhand, if it's
-	//the same suit or rank as the top card of the oldBuy pile
-	//then it's added to it
+	// Finally, when you click a card in your playerhand
+	// discard it
 	playerhand[turn].click(function(card){
-		if (lastCard.length > 0) {
-			var oldBuy = lastCard.topCard();
-			var suit = oldBuy.suit;
-			if (suit == 's') {
-				oldBuySpades.addCard(oldBuy);
-				oldBuySpades.render();
-			} else if (suit == 'h') {
-				oldBuyHearts.addCard(oldBuy)
-				oldBuyHearts.render();
-			} else if (suit == 'd') {
-				oldBuyDiamonds.addCard(oldBuy);
-				oldBuyDiamonds.render();
-			} else {
-				oldBuyClubs.addCard(oldBuy);
-				oldBuyClubs.render();
+		var deck = card.container;
+		if (deck && deck.select(card)) {
+			if (lastCard.length > 0) {
+				var oldBuy = lastCard.topCard();
+				var suit = oldBuy.suit;
+				if (suit == 's') {
+					oldBuySpades.addCard(oldBuy);
+					oldBuySpades.render();
+				} else if (suit == 'h') {
+					oldBuyHearts.addCard(oldBuy)
+					oldBuyHearts.render();
+				} else if (suit == 'd') {
+					oldBuyDiamonds.addCard(oldBuy);
+					oldBuyDiamonds.render();
+				} else {
+					oldBuyClubs.addCard(oldBuy);
+					oldBuyClubs.render();
+				}
 			}
+			lastCard.addCard(card);
+			lastCard.render();
+			playerhand[turn].render();
 		}
-		lastCard.addCard(card);
-		lastCard.render();
-		playerhand[turn].render();
 	});
 }
 
