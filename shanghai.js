@@ -103,25 +103,42 @@ function makeHands(players) {
 	$('#left').click(function() {
 		var hand = playerhand[turn];
 		var i = hand.selected;
-		if (i > 0) {
-			// Move selected card left
+		if (i >= 0) {
 			var card = hand[i];
-			hand.splice(i, 1);
-			hand.splice(--i, 0, card);
-			hand.selected = i;
-			hand.render();
+			if (i > 0) {
+				// Move selected card left
+				hand.splice(i, 1);
+				hand.splice(--i, 0, card);
+				hand.selected = i;
+				hand.render({immediate:true});
+			} else {
+				// Move 1st card to end
+				i = hand.length - 1;
+				hand.splice(0, 1);
+				hand.splice(i, 0, card);
+				hand.selected = i;
+				hand.render({immediate:true});
+			}
 		}
 	});
 	$('#right').click(function() {
 		var hand = playerhand[turn];
 		var i = hand.selected;
-		if (i < hand.length - 1) {
-			// Move selected card right
+		if (i >= 0) {
 			var card =  hand[i];
-			hand.splice(i, 1);
-			hand.splice(++i, 0, card);
-			hand.selected = i;
-			hand.render();
+			if (i < hand.length - 1) {
+				// Move selected card right
+				hand.splice(i, 1);
+				hand.splice(++i, 0, card);
+				hand.selected = i;
+				hand.render({immediate:true});
+			} else {
+				// Move last card to beginning
+				hand.splice(hand.length - 1,1);
+				hand.splice(0, 0, card);
+				hand.selected = 0;
+				hand.render({immediate:true});
+			}
 		}
 	});
 	
