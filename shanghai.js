@@ -33,15 +33,15 @@ var playerhand = [];
 var turn;
 
 var x1 = 210;
-var x2 = 360;
-var xc = 725;
-var x3 = 1090;
-var x4 = 1240;
-var y1 = 55;
-var y2 = 285;
-var yc = 400;
-var y3 = 515;
-var y4 = 745;
+var x2 = 310;
+var xc = 625;
+var x3 = 940;
+var x4 = 1040;
+var y1 = 100;
+var y2 = 275;
+var yc = 355;
+var y3 = 450;
+var y4 = 625;
 
 var xpos4 = [xc,x4,xc,x1];
 var ypos4 = [y1,yc,y4,yc];
@@ -67,19 +67,26 @@ var ypos10 = [y1,y1,y1,y2,y3,y4,y4,y4,y3,y2];
 var xpos = [xpos4,xpos5,xpos6,xpos7,xpos8,xpos9,xpos10];
 var ypos = [ypos4,ypos5,ypos6,ypos7,ypos8,ypos9,ypos10];
 
+function renderOldBuy() {
+    this.oldBuySpades.render();
+    this.oldBuyHearts.render();
+    this.oldBuyClubs.render();
+	this.oldBuyDiamonds.render();
+}
+
 function makeHands(players) {
 	//Lets add a oldBuy pile
 	lastCard = new cards.Deck({faceUp:true});
 	lastCard.x -= 130;
 	lastCard.y += 50;
-	var xoldBuy = 800;
-	var yoldBuy = 250;
+    var xoldBuy = 630;
+    var yoldBuy = 280;
 
 	// Create oldBuy piles (per suit)
 	oldBuySpades = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy, max:13});
-	oldBuyHearts = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+100, max:13});
-	oldBuyClubs = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+200, max:13});
-	oldBuyDiamonds = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+300, max:13});
+	oldBuyHearts = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+50, max:13});
+	oldBuyClubs = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+100, max:13});
+	oldBuyDiamonds = new cards.Hand({faceUp:true, x:xoldBuy, y:yoldBuy+150, max:13});
 
 	var t = (parseInt(players)+1)/2;
 	turn = Math.trunc(t);
@@ -90,7 +97,7 @@ function makeHands(players) {
 		var buttons = '<button id="left" style="width:30px;float:left"><</button>' +
 					  '<button id="right" style="width:30px;float:right">></button>';
 		var html = (turn == i) ? buttons : "";
-		playerhand[i] = new cards.Hand({faceUp:true, x:xp, y:yp, max:30, buttons:html});
+		playerhand[i] = new cards.Hand({faceUp:true, x:xp, y:yp, max:22, buttons:html});
 	}
 
 	$('#left').click(function() {
@@ -165,17 +172,14 @@ function makeHands(players) {
 				var suit = oldBuy.suit;
 				if (suit == 's') {
 					oldBuySpades.addCard(oldBuy);
-					oldBuySpades.render();
 				} else if (suit == 'h') {
 					oldBuyHearts.addCard(oldBuy)
-					oldBuyHearts.render();
 				} else if (suit == 'd') {
 					oldBuyDiamonds.addCard(oldBuy);
-					oldBuyDiamonds.render();
 				} else {
 					oldBuyClubs.addCard(oldBuy);
-					oldBuyClubs.render();
 				}
+				renderOldBuy();
 			}
 			lastCard.addCard(card);
 			lastCard.render();

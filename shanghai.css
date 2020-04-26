@@ -3,7 +3,7 @@ html {
 }
 
 body { 
-	width: 1450px;
+	width: 1250px;
 	background:#FFF; 
 	font-family: arial, sans-serif; 
 }
@@ -35,8 +35,8 @@ h1 {
 	position:absolute;
 	top: 0; left: 0;
 	background-color:green;
-	height:800px;
-	width:1450px;
+	height:720px;
+	width:1250px;
 }
 a:visited {color:blue;}
 

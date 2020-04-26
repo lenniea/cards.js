@@ -347,7 +347,7 @@ var cards = (function() {
 		// Create css object for Hand
 		var table = opt.table;
 		if (table) {
-			var maxwidth = opt.cardSize.width + opt.cardSize.padding * options.max + 1;
+			var maxwidth = opt.cardSize.width + opt.cardSize.padding * options.max;
 			var height = opt.cardSize.height;
 			var x = options.x - maxwidth / 2;
 			var y = options.y - height / 2;
