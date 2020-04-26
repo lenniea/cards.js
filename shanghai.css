@@ -64,3 +64,55 @@ footer a, footer a:visited{
 footer a:hover {
 	color:black;
 }
+
+#sprite {
+	position: relative;
+}
+
+.blkchip {
+	background: url("img/sprites.png") no-repeat;
+	width: 55px; /* Icon width */
+	height: 55px; /* Icon height */
+	display: inline-block; /* Display icon as inline block */
+	background-position: 0, 0
+}
+
+.redchip {
+	background: url("img/sprites.png") no-repeat;
+	width: 55px; /* Icon width */
+	height: 55px; /* Icon height */
+	display: inline-block; /* Display icon as inline block */
+	background-position: -55px, 0
+}
+
+.grnchip {
+	background: url("img/sprites.png") no-repeat;
+	width: 55px; /* Icon width */
+	height: 55px; /* Icon height */
+	display: inline-block; /* Display icon as inline block */
+	background-position: -110px, 0
+}
+
+.bluchip {
+	background: url("img/sprites.png") no-repeat;
+	width: 55px; /* Icon width */
+	height: 55px; /* Icon height */
+	display: inline-block; /* Display icon as inline block */
+	background-position: -165px, 0
+}
+
+.leftarrow {
+	background: url("img/sprites.png") no-repeat;
+	width: 55px; /* Icon width */
+	height: 55px; /* Icon height */
+	display: inline-block; /* Display icon as inline block */
+	background-position: -220px, 0
+}
+
+.rightarrow {
+	background: url("img/sprites.png") no-repeat;
+	width: 55px; /* Icon width */
+	height: 55px; /* Icon height */
+	display: inline-block; /* Display icon as inline block */
+	background-position: -275px, 0
+}
