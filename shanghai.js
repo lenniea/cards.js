@@ -214,6 +214,22 @@ $('#deal').click(function() {
 	
 	$("#players").hide();
 	$('#deal').hide();
+
+	$(".card").each(function () {
+		this.addEventListener("dragstart", handleDragStart, false);
+		this.addEventListener("dragend", handleDragEnd, false);
+		this.addEventListener("touchstart", handleTouchStart, false);
+		this.addEventListener("touchmove", handleTouchMove, false);
+		this.addEventListener("touchend", handleTouchEnd, false);
+	});
+
+	$(".hand").each(function () {
+		this.addEventListener("dragenter", handleDragEnter, false);
+		this.addEventListener("dragleave", handleDragLeave, false);
+		this.addEventListener("drop", handleDragDrop, false);
+		this.ondragover = function () { return false };
+	});
+
 	deck.deal(19, playerhand, 50, function() {
 		//This is a callback function, called when the dealing
 		//is done.

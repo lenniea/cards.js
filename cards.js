@@ -1,4 +1,98 @@
-﻿
+﻿var dragSource = null;
+
+function handleDragEnter(e) {
+	var id = e.target.getAttribute('id');
+	id = (id != null) ? id : e.target.className;
+	console.log("You are dragging over the " + id);
+}
+
+function handleDragLeave(e) {
+	var id = e.target.getAttribute('id');
+	id = (id != null) ? id : e.target.className;
+	console.log("You left the " + id);
+}
+
+function handleDragDrop(e) {
+	e.preventDefault();
+	if (dragSource != null) {
+		var card = $(dragSource).data('card');
+		var hand = $(e.target).data('hand');
+		dragSource.style.cursor = "default";
+		dragSource =  null;
+		var id = card.className;
+		hand.addCard(card);
+		hand.render();
+		console.log("You droped " + id + " into " + hand.className);
+	}
+	droppedIn = true;
+}
+
+var droppedIn = false;
+var activeEvent = '';
+var originalX = '';
+var originalY = '';
+
+function handleDragStart(e) {
+	var id = e.target.getAttribute('id');
+	id = (id != null) ? id : e.target.className;
+	dragSource = e.target;
+	console.log("Dragging the element " + id);
+	e.dataTransfer.dropEffect = "move";
+	e.dataTransfer.setData("text", id);
+}
+
+function handleDragEnd(e) {
+	if (droppedIn == false) {
+		var id = e.target.getAttribute('id');
+		id = (id != null) ? id : e.target.className;
+		console.log("You let the " + id + " go.");
+		dragSource = null;
+	}
+	droppedIn = false;
+}
+
+function handleTouchStart(e) {
+	var id = e.target.getAttribute('id');
+	id = (id != null) ? id : e.target.className;
+    console.log("Touch start with element " + id);
+	originalX = (e.target.offsetLeft - 10) + "px";
+	originalY = (e.target.offsetTop - 10) + "px";
+	activeEvent = 'start';
+}
+
+function handleTouchMove(e) {
+	var touchLocation = e.targetTouches[0];
+	var pageX = (touchLocation.pageX - 50) + "px";
+	var pageY = (touchLocation.pageY - 50) + "px";
+	console.log("Touch=(" + pageX + "," + pageY + ")");
+	e.target.style.position = "absolute";
+	e.target.style.left = pageX;
+	e.target.style.top = pageY;
+	activeEvent = 'move';
+}
+
+function handleTouchEnd(e) {
+	e.preventDefault();
+	if (activeEvent === 'move') {
+		var pageX = (parseInt(e.target.style.left) - 50);
+		var pageY = (parseInt(e.target.style.top) - 50);
+		var id = e.target.getAttribute('id');
+		id = (id != null) ? id : e.target.className;
+
+		if (detectTouchEnd(dropZone.offsetLeft, dropZone.offsetTop, pageX, pageY, dropZone.offsetWidth, dropZone.offsetHeight)) {
+			dropZone.appendChild(e.target);
+			e.target.style.position = "initial";
+			droppedIn = true;
+			console.log("You droped " + id + " into drop zone");
+		} else {
+			e.target.style.left = originalX;
+			e.target.style.top = originalY;
+          	console.log("You let the " + id + " go.");
+		}
+	}
+}
+	
+
 var cards = (function() {
 	//The global options
 	var opt = {
@@ -74,7 +168,7 @@ var cards = (function() {
 	function Card(suit, rank, table) {
 		this.init(suit, rank, table);
 	}
-	
+
 	Card.prototype = {
 		init: function (suit, rank, table) {
 			this.shortName = suit + rank;
@@ -82,12 +176,12 @@ var cards = (function() {
 			this.rank = rank;
 			this.name = suit.toUpperCase()+rank;
 			this.faceUp = false;
-			this.el = $('<div/>').css({
+			this.el = $('<div draggable="true"><div/>').css({
 				width:opt.cardSize.width,
 				height:opt.cardSize.height,
 				"background-image":'url('+ opt.cardsUrl + ')',
 				position:'absolute',
-				cursor:'pointer'	
+				cursor:'pointer'
 			}).addClass('card').data('card', this).appendTo($(table));
 			this.showCard(0);
 			this.moveToFront();
@@ -154,7 +248,7 @@ var cards = (function() {
 		this.angle = angle;
 	
 	}
-	
+
 	Container.prototype = new Array();
 	Container.prototype.extend = function(obj) {
 		for (var prop in obj) {
@@ -477,6 +571,17 @@ var cards = (function() {
 })();
 
 if (typeof module !== 'undefined') {
-    module.exports = cards;
+	module.exports = cards;
+	
+    module.exports = handleDragEnter;
+    module.exports = handleDragLeave;
+	module.exports = handleDragDrop;
+
+	module.exports = handleDragStart;
+	module.exports = handleDragEnd;
+
+    module.exports = handleTouchStart;
+    module.exports = handleTouchMove;
+	module.exports = handleTouchEnd;
 }
 
